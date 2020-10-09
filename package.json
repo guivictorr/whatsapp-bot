@@ -4,6 +4,9 @@
   "main": "index.js",
   "author": "Guilherme",
   "license": "MIT",
+  "scripts": {
+    "start": "node src/index.js"
+  },
   "dependencies": {
     "axios": "^0.20.0",
     "qrcode-terminal": "^0.12.0",
