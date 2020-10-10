@@ -1,7 +1,7 @@
 const questions = require('../data/questions.json');
 const rand = require('../utils/randomNumber');
 
-const euNunca = msg => {
+const fun = msg => {
   if (msg.body === '!eununca') {
     msg.reply(`🤖 ${questions[rand(0, 477)]}`);
     return;
@@ -12,4 +12,4 @@ const euNunca = msg => {
   }
 };
 
-module.exports = euNunca;
+module.exports = fun;

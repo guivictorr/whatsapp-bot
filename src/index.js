@@ -1,6 +1,6 @@
 const { Client } = require('whatsapp-web.js');
 const qrcode = require('qrcode-terminal');
-const euNunca = require('./commands/euNunca');
+const fun = require('./commands/fun');
 const economy = require('./commands/economy');
 const client = new Client();
 
@@ -12,8 +12,8 @@ client.on('ready', () => {
   console.log('Client is ready! 🎉');
 });
 
-client.on('message', msg => {
-  euNunca(msg);
+client.on('message_create', msg => {
+  fun(msg);
   economy(msg);
 });
 
