@@ -2,6 +2,7 @@ const { Client } = require('whatsapp-web.js');
 const qrcode = require('qrcode-terminal');
 const fun = require('./commands/fun');
 const economy = require('./commands/economy');
+const info = require('./commands/info');
 const client = new Client();
 
 client.on('qr', qr => {
@@ -15,6 +16,7 @@ client.on('ready', () => {
 client.on('message_create', msg => {
   fun(msg);
   economy(msg);
+  info(msg);
 });
 
 client.initialize();

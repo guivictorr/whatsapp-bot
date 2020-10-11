@@ -4,8 +4,18 @@ const economy = async msg => {
   if (msg.body === '!cotacao') {
     const data = await getEconomyData();
 
+    const formatNumber = number => {
+      return Number(number).toFixed(2);
+    };
+
     const type = currency => {
-      return `\n💲 *${currency.name} (${currency.code})* \nValor atual: R$ ${currency.bid} \nValor mais alto: R$ ${currency.high} \nValor mais baixo: R$ ${currency.low}\n`;
+      return `\n💲 *${currency.name} (${
+        currency.code
+      })* \nValor atual: R$ ${formatNumber(
+        currency.bid,
+      )} \nValor mais alto: R$ ${formatNumber(
+        currency.high,
+      )} \nValor mais baixo: R$ ${formatNumber(currency.low)}\n`;
     };
 
     msg.reply(
@@ -13,6 +23,7 @@ const economy = async msg => {
         data.BTC,
       )}`,
     );
+    return;
   }
 };
 

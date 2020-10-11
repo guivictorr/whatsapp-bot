@@ -10,6 +10,11 @@ const fun = msg => {
     msg.reply(`🤖 ${questions[rand(477, 761)]}`);
     return;
   }
+  if (msg.body.startsWith('!xinga')) {
+    const sufix = msg.body.split('!xinga')[1];
+    msg.reply(`Vai toma no seu cu *${sufix.trim()}*`);
+    return;
+  }
 };
 
 module.exports = fun;
