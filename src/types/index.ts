@@ -21,6 +21,6 @@ export type ICovidData = {
   deaths: number;
   refuses: number;
   state: string;
-  datetime: Date;
+  datetime: string;
   error: string;
 };

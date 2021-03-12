@@ -1,6 +1,8 @@
 import { Message } from 'whatsapp-web.js';
 import { ICovidData } from '../types';
 import getData from '../utils/getData';
+import formatDate from '../utils/formatDate';
+import formatNumber from '../utils/formatNumber';
 
 const covid = async (msg: Message, args: string[]): Promise<void> => {
   const sufix = args[0];
@@ -16,7 +18,11 @@ const covid = async (msg: Message, args: string[]): Promise<void> => {
 
   const { cases, deaths, refuses, state, datetime } = data;
 
-  const message = `*${state}:* \n🦠Casos: ${cases} \n⚰Mortes: ${deaths}\n💚Recuperados: ${refuses} \n📅Data: ${datetime}`;
+  const message = `*${state}:* \n🦠Casos: ${formatNumber(
+    cases,
+  )} \n⚰Mortes: ${formatNumber(deaths)}\n💚Recuperados: ${formatNumber(
+    refuses,
+  )} \n📅Data: ${formatDate(datetime)}`;
 
   msg.reply(message);
 };
