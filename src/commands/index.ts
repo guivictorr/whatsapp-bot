@@ -5,6 +5,8 @@ import covid from './covid';
 
 import { Message } from 'whatsapp-web.js';
 
+type ICommands = keyof typeof commands;
+
 const commands = {
   cotacao,
   xinga,
@@ -15,14 +17,9 @@ const commands = {
 const commandHandler = (msg: Message): void => {
   const msgBody = msg.body;
   const tokens = msgBody.split(' ');
-  let command = tokens.shift();
 
-  if (!command) {
-    return;
-  }
-
-  if (command.startsWith('!')) {
-    command = command.substring(1);
+  if (tokens[0].startsWith('!')) {
+    const command = tokens[0].substring(1) as ICommands;
     commands[command](msg, tokens);
   }
 };
