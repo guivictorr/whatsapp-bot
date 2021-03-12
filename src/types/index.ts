@@ -8,6 +8,7 @@ export type ICurrencyProps = {
   bid: number;
   high: number;
   low: number;
+  create_date: string;
 };
 
 export type IDataProps = {
