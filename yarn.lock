@@ -295,7 +295,7 @@ async@>=0.2.9:
   resolved "https://registry.yarnpkg.com/async/-/async-3.2.0.tgz#b3a2685c5ebb641d3de02d161002c60fc9f85720"
   integrity sha512-TR2mEZFVOj2pLStYxLht7TyfuRzaydfpxr3k9RpHIzMgw7A64dzsdqCxH1WJyQdoe8T10nDXd9wnEigmiuHIZw==
 
-axios@*:
+axios@*, axios@0.21.1:
   version "0.21.1"
   resolved "https://registry.yarnpkg.com/axios/-/axios-0.21.1.tgz#22563481962f4d6bde9a76d516ef0e5d3c09b2b8"
   integrity sha512-dKQiRHxGD9PPRIUNIWvZhPTPpl1rf/OxTYKsqKUDjBwYylTvV7SjSHJb9ratfyzM6wCdLCOYLzs73qpg5c4iGA==
@@ -1312,6 +1312,13 @@ node-addon-api@^3.0.2:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/node-addon-api/-/node-addon-api-3.1.0.tgz#98b21931557466c6729e51cb77cd39c965f42239"
   integrity sha512-flmrDNB06LIl5lywUz7YlNGZH/5p0M7W28k8hzd9Lshtdh1wshD2Y+U4h9LD6KObOy1f+fEVdgprPrEymjM5uw==
+
+node-base64-image@^2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/node-base64-image/-/node-base64-image-2.0.3.tgz#ab1125ace019d2959c8915fa4905be6c5f83158d"
+  integrity sha512-6wD7BYaSRU35LXejevnLjpHGJN5SnIh6H1LSfvGW1vpZOacj1t/q63ma0uLarZnkz/yjpUGjyZZ81diwHS76pw==
+  dependencies:
+    axios "0.21.1"
 
 noop-logger@^0.1.1:
   version "0.1.1"

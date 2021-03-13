@@ -2,6 +2,7 @@ import cotacao from './cotacao';
 import xinga from './xinga';
 import eununca from './eununca';
 import covid from './covid';
+import perfil from './perfil';
 
 import { Message } from 'whatsapp-web.js';
 
@@ -12,6 +13,7 @@ const commands = {
   xinga,
   eununca,
   covid,
+  perfil,
 };
 
 const commandHandler = (msg: Message): void => {
