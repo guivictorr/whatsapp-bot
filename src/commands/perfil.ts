@@ -16,11 +16,15 @@ const perfil = async (msg: Message): Promise<void> => {
   }
 
   const photoURL = await contact.getProfilePicUrl();
-  const about = await contact.getAbout();
-  // TODO -> Arrumar o any type
-  const image: any = String(await encode(photoURL, { string: true }));
+  const image = String(await encode(photoURL, { string: true }));
   const media = new MessageMedia('image/png', image, `${contact.number}.png`);
-  const message = `Perfil do *${contact.pushname}*\n\n📱Número: ${contact.number}\n💭Status: ${about}`;
+
+  if (!photoURL) msg.reply('🤖 Foto não localizada...');
+
+  const about = await contact.getAbout();
+  const message = `Perfil do *${contact.pushname}*\n\n📱Número: ${
+    contact.number
+  }\n💭Status: ${about ?? 'Sem Status'}`;
 
   msg.reply(message, chat.id._serialized, { media });
 };
