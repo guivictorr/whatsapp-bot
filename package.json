@@ -5,7 +5,8 @@
   "author": "Guilherme",
   "license": "MIT",
   "scripts": {
-    "start": "ts-node-dev --respawn --transpile-only --ignore-watch node_modules --ignore-watch src/data src/index.ts"
+    "dev": "ts-node-dev --respawn --transpile-only --ignore-watch node_modules --ignore-watch src/data src/index.ts",
+    "start": "tsc --build && node dist/index.js"
   },
   "dependencies": {
     "axios": "^0.20.0",
