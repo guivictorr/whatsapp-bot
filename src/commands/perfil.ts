@@ -16,10 +16,14 @@ const perfil = async (msg: Message): Promise<void> => {
   }
 
   const photoURL = await contact.getProfilePicUrl();
+
+  if (!photoURL) {
+    msg.reply('🤖 Foto não localizada...');
+    return;
+  }
+
   const image = String(await encode(photoURL, { string: true }));
   const media = new MessageMedia('image/png', image, `${contact.number}.png`);
-
-  if (!photoURL) msg.reply('🤖 Foto não localizada...');
 
   const about = await contact.getAbout();
   const message = `Perfil do *${contact.pushname}*\n\n📱Número: ${

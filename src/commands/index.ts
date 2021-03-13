@@ -1,8 +1,8 @@
 import cotacao from './cotacao';
-import xinga from './xinga';
 import eununca from './eununca';
 import covid from './covid';
 import perfil from './perfil';
+import ban from './ban';
 
 import { Message } from 'whatsapp-web.js';
 
@@ -10,10 +10,10 @@ type ICommands = keyof typeof commands;
 
 const commands = {
   cotacao,
-  xinga,
   eununca,
   covid,
   perfil,
+  ban,
 };
 
 const commandHandler = (msg: Message): void => {
