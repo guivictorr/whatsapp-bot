@@ -1,16 +1,11 @@
 import { Message, Contact } from 'whatsapp-web.js';
-import rand from '../utils/rand';
+import { IPlayerProps, IBoardKeys } from '../../types';
+import rand from '../../utils/rand';
 
-type IPlayerProps = {
-  name: string;
-  id: string;
-  symbol: string;
-};
-
-type IBoardKeys = keyof typeof board;
-
-const playerList: IPlayerProps[] = [];
 let isInProgress = false;
+let currentPlayer = '';
+const playerList: IPlayerProps[] = [];
+
 const winCombinations = [
   [1, 2, 3],
   [4, 5, 6],
@@ -21,7 +16,8 @@ const winCombinations = [
   [1, 5, 9],
   [3, 5, 7],
 ];
-const board = {
+
+export const board = {
   1: '⬜',
   2: '⬜',
   3: '⬜',
@@ -106,13 +102,33 @@ const checkTie = () => {
   for (const key of boardKeys) {
     const newKey = Number(key) as IBoardKeys;
 
-    if (board[newKey] === ' ') {
+    if (board[newKey] !== ' ') {
       return false;
     }
   }
 
   return true;
 };
+
+const reset = () => {
+  isInProgress = false;
+  currentPlayer = '';
+  playerList.length = 0;
+  const resetedBoard = {
+    1: '⬜',
+    2: '⬜',
+    3: '⬜',
+    4: '⬜',
+    5: '⬜',
+    6: '⬜',
+    7: '⬜',
+    8: '⬜',
+    9: '⬜',
+  };
+
+  Object.assign(board, resetedBoard);
+};
+
 // Sub Commands
 
 const enter = (contact: Contact, msg: Message) => {
@@ -134,10 +150,10 @@ const enter = (contact: Contact, msg: Message) => {
 };
 
 const start = (msg: Message) => {
-  // if (playerList.length !== 2) {
-  //   msg.reply(`🤖 Aguardando... (${playerList.length} de 2)`);
-  //   return;
-  // }
+  if (playerList.length !== 2) {
+    msg.reply(`🤖 Aguardando... (${playerList.length} de 2)`);
+    return;
+  }
 
   if (isInProgress) {
     msg.reply(`🤖 Já temos um jogo em progresso`);
@@ -146,7 +162,9 @@ const start = (msg: Message) => {
 
   isInProgress = true;
 
-  const randomPlayer = playerList[rand(0, playerList.length)];
+  const randNumber = rand(0, playerList.length);
+  const randomPlayer = playerList[randNumber];
+  currentPlayer = randomPlayer.id;
   printBoard(randomPlayer, msg);
 };
 
@@ -156,17 +174,28 @@ const playTurn = (player: IPlayerProps, position: IBoardKeys, msg: Message) => {
     return;
   }
 
+  if (currentPlayer !== player.id) {
+    msg.reply('🤖 Não é sua vez');
+    return;
+  }
+
+  // const nextPlayer = playerList.findIndex(p => p.id !== player.id);
+
+  // currentPlayer = playerList[nextPlayer].id;
+
   if (validateMove(position)) {
     markBoard(position, player);
     printBoard(player, msg);
 
     if (checkWin(player)) {
       msg.reply(`🎉 Parabéns ${player.name} você venceu`);
+      reset();
       return;
     }
 
     if (checkTie()) {
       msg.reply(`👵 Deu velha`);
+      reset();
       return;
     }
   } else {
