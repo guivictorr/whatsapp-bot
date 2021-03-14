@@ -5,6 +5,7 @@ import rand from '../../utils/rand';
 let isInProgress = false;
 let currentPlayer = '';
 const playerList: IPlayerProps[] = [];
+const symbols = ['❌', '⭕'];
 
 const winCombinations = [
   [1, 2, 3],
@@ -32,7 +33,6 @@ export const board = {
 // Utility Functions
 
 const handlePlayer = ({ pushname, id, isMe }: Contact): IPlayerProps => {
-  const symbols = ['❌', '⭕'];
   let name = pushname;
   const symbol = symbols.pop() as string;
 
@@ -102,7 +102,7 @@ const checkTie = () => {
   for (const key of boardKeys) {
     const newKey = Number(key) as IBoardKeys;
 
-    if (board[newKey] !== ' ') {
+    if (board[newKey] === '⬜') {
       return false;
     }
   }
@@ -114,6 +114,7 @@ const reset = () => {
   isInProgress = false;
   currentPlayer = '';
   playerList.length = 0;
+  symbols.push('❌', '⭕');
   const resetedBoard = {
     1: '⬜',
     2: '⬜',
@@ -179,13 +180,13 @@ const playTurn = (player: IPlayerProps, position: IBoardKeys, msg: Message) => {
     return;
   }
 
-  // const nextPlayer = playerList.findIndex(p => p.id !== player.id);
+  const nextPlayer = playerList.findIndex(p => p.id !== player.id);
 
-  // currentPlayer = playerList[nextPlayer].id;
+  currentPlayer = playerList[nextPlayer].id;
 
   if (validateMove(position)) {
     markBoard(position, player);
-    printBoard(player, msg);
+    printBoard(playerList[nextPlayer], msg);
 
     if (checkWin(player)) {
       msg.reply(`🎉 Parabéns ${player.name} você venceu`);
