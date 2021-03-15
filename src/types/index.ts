@@ -1,6 +1,8 @@
+import { board } from '../commands/jogo-da-velha/';
 import questions from '../data/questions.json';
 
 export type IQuestionsKeys = keyof typeof questions;
+export type IBoardKeys = keyof typeof board;
 
 export type ICurrencyProps = {
   name: string;
@@ -24,4 +26,10 @@ export type ICovidData = {
   state: string;
   datetime: string;
   error: string;
+};
+
+export type IPlayerProps = {
+  name: string;
+  id: string;
+  symbol: string;
 };
