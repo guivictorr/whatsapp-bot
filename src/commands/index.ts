@@ -3,6 +3,7 @@ import eununca from './eununca';
 import covid from './covid';
 import perfil from './perfil';
 import ban from './ban';
+import figurinha from './figurinha';
 import velha from './jogo-da-velha';
 
 import { Message } from 'whatsapp-web.js';
@@ -16,6 +17,7 @@ const commands = {
   perfil,
   ban,
   velha,
+  figurinha,
 };
 
 const commandHandler = (msg: Message): void => {

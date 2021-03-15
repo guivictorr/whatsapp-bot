@@ -180,11 +180,11 @@ const playTurn = (player: IPlayerProps, position: IBoardKeys, msg: Message) => {
     return;
   }
 
-  const nextPlayer = playerList.findIndex(p => p.id !== player.id);
-
-  currentPlayer = playerList[nextPlayer].id;
-
   if (validateMove(position)) {
+    const nextPlayer = playerList.findIndex(p => p.id !== player.id);
+
+    currentPlayer = playerList[nextPlayer].id;
+
     markBoard(position, player);
     printBoard(playerList[nextPlayer], msg);
 
@@ -210,9 +210,9 @@ const playTurn = (player: IPlayerProps, position: IBoardKeys, msg: Message) => {
 const velha = async (msg: Message, args: string[]): Promise<void> => {
   const chat = await msg.getChat();
 
-  if (chat.isGroup) {
-    return;
-  }
+  // if (chat.isGroup) {
+  //   return;
+  // }
 
   const sufix = args[1];
   const position = Number(args[2]) as IBoardKeys;
