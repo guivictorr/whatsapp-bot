@@ -208,12 +208,6 @@ const playTurn = (player: IPlayerProps, position: IBoardKeys, msg: Message) => {
 // Command
 
 const velha = async (msg: Message, args: string[]): Promise<void> => {
-  const chat = await msg.getChat();
-
-  // if (chat.isGroup) {
-  //   return;
-  // }
-
   const sufix = args[1];
   const position = Number(args[2]) as IBoardKeys;
   const contact = await msg.getContact();

@@ -1,6 +1,6 @@
 import { Message } from 'whatsapp-web.js';
 
-const figurinha = async (msg: Message) => {
+const figurinha = async (msg: Message): Promise<void> => {
   const { id } = await msg.getChat();
 
   if (!msg.hasQuotedMsg) {
