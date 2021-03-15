@@ -223,6 +223,10 @@ const velha = async (msg: Message, args: string[]): Promise<void> => {
     case 'jogar':
       playTurn(player, position, msg);
       break;
+    case 'resetar':
+      reset();
+      msg.reply(`🤖 O jogo foi resetado\n\n${playerList.length} de 2 players`);
+      break;
   }
 };
 
