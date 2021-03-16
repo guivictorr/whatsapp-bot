@@ -4,6 +4,14 @@ import questions from '../data/questions.json';
 export type IQuestionsKeys = keyof typeof questions;
 export type IBoardKeys = keyof typeof board;
 
+export type IAnimeData = {
+  url: string;
+  image_url: string;
+  title: string;
+  episodes: number;
+  start_date: string;
+};
+
 export type ICurrencyProps = {
   name: string;
   code: string;
