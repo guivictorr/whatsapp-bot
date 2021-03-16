@@ -1,19 +1,8 @@
-import { Message, MessageMedia } from 'whatsapp-web.js';
+import { Contact, Message, MessageMedia } from 'whatsapp-web.js';
 import { encode } from 'node-base64-image';
 
-const perfil = async (msg: Message): Promise<void> => {
+const sendProfile = async (contact: Contact, msg: Message) => {
   const chat = await msg.getChat();
-  const [contact] = await msg.getMentions();
-
-  if (!chat.isGroup) {
-    msg.reply('🤖 Comando apenas para grupos.');
-    return;
-  }
-
-  if (!contact) {
-    msg.reply('🤖 Contato não localizado...');
-    return;
-  }
 
   const photoURL = await contact.getProfilePicUrl();
 
@@ -31,6 +20,18 @@ const perfil = async (msg: Message): Promise<void> => {
   }\n💭Status: ${about ?? 'Sem Status'}`;
 
   msg.reply(message, chat.id._serialized, { media });
+};
+
+const perfil = async (msg: Message): Promise<void> => {
+  const sender = await msg.getContact();
+  const [mention] = await msg.getMentions();
+
+  if (!mention) {
+    sendProfile(sender, msg);
+    return;
+  }
+
+  sendProfile(mention, msg);
 };
 
 export default perfil;
