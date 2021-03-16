@@ -1,4 +1,4 @@
-import { board } from '../commands/jogo-da-velha/';
+import { board } from '../commands/jogo-da-velha/components/board';
 import questions from '../data/questions.json';
 
 export type IQuestionsKeys = keyof typeof questions;
