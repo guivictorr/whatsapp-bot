@@ -34,14 +34,14 @@ yarn dev ou npm run dev
 
 ## ❗ Comandos
 
-- !covid <uf>
+- !covid uf
 - !cotacao
 - !perfil
 - !perfil @contato **(Grupo)**
 - !figurinha
 - !eununca
 - !ban contato **(Grupo)**
-- !anime <nome>
+- !anime nome
 
 ### Jogo da Velha
 - !velha entrar
