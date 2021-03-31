@@ -8,10 +8,10 @@ import { isInProgress } from './start';
 
 let currentPlayer = '';
 
-const changeTurn = ({ id }: IPlayerProps, msg: Message) => {
+const changeTurn = ({ id }: IPlayerProps, msg: Message): Promise<Message> => {
   const nextPlayer = playerList.findIndex(player => player.id !== id);
   currentPlayer = playerList[nextPlayer].id;
-  printBoard(playerList[nextPlayer], msg);
+  return printBoard(playerList[nextPlayer], msg);
 };
 
 const setCurrentPlayer = (id: string): void => {
@@ -26,38 +26,33 @@ const playTurn = (
   contact: Contact,
   position: IBoardKeys,
   msg: Message,
-): void => {
+): Promise<Message> => {
   if (!isInProgress) {
-    msg.reply(`🤖 O jogo ainda não começou`);
-    return;
+    return msg.reply(`🤖 O jogo ainda não começou`);
   }
 
   const player = handlePlayerAtList(contact);
 
   if (currentPlayer !== player.id) {
-    msg.reply('🤖 Não é sua vez');
-    return;
+    return msg.reply('🤖 Não é sua vez');
   }
 
   if (validateMove(position)) {
     markBoard(position, player);
     if (checkWin(player)) {
       msg.reply(`🎉 Parabéns ${player.name} você venceu`);
-      reset();
-      return;
+      return reset(msg);
     }
 
     if (checkTie()) {
       msg.reply(`👵 Deu velha`);
-      reset();
-      return;
+      return reset(msg);
     }
   } else {
-    msg.reply(`❌ Movimento inválido, tente novamente.`);
-    return;
+    return msg.reply(`❌ Movimento inválido, tente novamente.`);
   }
 
-  changeTurn(player, msg);
+  return changeTurn(player, msg);
 };
 
 export { playTurn, resetTurn, setCurrentPlayer };

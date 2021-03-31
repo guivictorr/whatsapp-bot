@@ -1,29 +1,26 @@
 import { Message } from 'whatsapp-web.js';
 
-const figurinha = async (msg: Message): Promise<void> => {
+const figurinha = async (msg: Message): Promise<Message> => {
   const { id } = await msg.getChat();
 
   if (!msg.hasQuotedMsg) {
-    msg.reply('🤖 Não encontrei imagem');
-    return;
+    return msg.reply('🤖 Não encontrei imagem');
   }
   const quotedMessage = await msg.getQuotedMessage();
 
   if (quotedMessage.type !== 'image') {
-    msg.reply('🤖 Não encontrei imagem');
-    return;
+    return msg.reply('🤖 Não encontrei imagem');
   }
 
   if (!quotedMessage.hasMedia) {
-    msg.reply(
+    return msg.reply(
       '🤖 Não consigo baixar esta imagem\n\n❗ Se a imagem não tem o símbolo de download, o bot não consegue baixar a imagem com uma boa qualidade',
     );
-    return;
   }
 
   const media = await quotedMessage.downloadMedia();
 
-  msg.reply(`Ta ai a figurinha`, id._serialized, {
+  return msg.reply(`Ta ai a figurinha`, id._serialized, {
     media,
     sendMediaAsSticker: true,
   });

@@ -4,7 +4,7 @@ import getData from '../utils/getData';
 import formatNumber from '../utils/formatNumber';
 import formatDate from '../utils/formatDate';
 
-const cotacao = async (msg: Message): Promise<void> => {
+const cotacao = async (msg: Message): Promise<Message> => {
   const url =
     'https://economia.awesomeapi.com.br/json/all/USD-BRL,EUR-BRL,BTC-BRL';
 
@@ -26,7 +26,7 @@ const cotacao = async (msg: Message): Promise<void> => {
     data.BTC,
   )}`;
 
-  msg.reply(message);
+  return msg.reply(message);
 };
 
 export default cotacao;

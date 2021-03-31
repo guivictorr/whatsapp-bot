@@ -1,6 +1,6 @@
 import { Message, GroupParticipant, GroupChat } from 'whatsapp-web.js';
 
-const ban = async (msg: Message): Promise<void> => {
+const ban = async (msg: Message): Promise<void | Message> => {
   const chat = (await msg.getChat()) as GroupChat;
   const memberList: GroupParticipant[] = chat.participants;
 
@@ -8,13 +8,11 @@ const ban = async (msg: Message): Promise<void> => {
   const msgContact = await msg.getContact();
 
   if (!chat.isGroup) {
-    msg.reply('🤖 Comando apenas para grupos.');
-    return;
+    return msg.reply('🤖 Comando apenas para grupos.');
   }
 
   if (!bannedUser) {
-    msg.reply('🤖 Usuário não localizado...');
-    return;
+    return msg.reply('🤖 Usuário não localizado...');
   }
 
   const userIndex: number = memberList.findIndex(
@@ -25,8 +23,7 @@ const ban = async (msg: Message): Promise<void> => {
   const isAdmin: boolean = memberList[userIndex].isAdmin;
 
   if (!isAdmin) {
-    msg.reply('🤖 Só admin pode utilizar o comando...');
-    return;
+    return msg.reply('🤖 Só admin pode utilizar o comando...');
   }
 
   await chat.removeParticipants([bannedUser.id._serialized]);

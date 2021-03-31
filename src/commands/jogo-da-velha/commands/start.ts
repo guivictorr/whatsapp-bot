@@ -5,22 +5,20 @@ import { setCurrentPlayer } from './playTurn';
 
 let isInProgress = false;
 
-const start = (msg: Message): void => {
+const start = (msg: Message): Promise<Message> => {
   if (playerList.length !== 2) {
-    msg.reply(`🤖 Aguardando... (${playerList.length} de 2)`);
-    return;
+    return msg.reply(`🤖 Aguardando... (${playerList.length} de 2)`);
   }
 
   if (isInProgress) {
-    msg.reply(`🤖 Já temos um jogo em progresso`);
-    return;
+    return msg.reply(`🤖 Já temos um jogo em progresso`);
   }
 
   isInProgress = true;
 
   const randomPlayer = handleRandomPlayer();
   setCurrentPlayer(randomPlayer.id);
-  printBoard(randomPlayer, msg);
+  return printBoard(randomPlayer, msg);
 };
 
 const resetProgress = (): void => {
