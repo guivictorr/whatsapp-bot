@@ -1,6 +1,11 @@
 <h1 align='center'>🤖 Whatsapp Bot</h1>
 <p align='center'>Um bot para o whatsapp feito usando <a href="https://github.com/pedroslopez/whatsapp-web.js">uma biblioteca que simula a conexão do Whatsapp Web em tempo real.</a></p>
 
+## 👍 Agradecimentos e Créditos
+
+- [@pedroslopez](https://github.com/pedroslopez)
+- [@caioagiani](https://github.com/caioagiani)
+
 ## 🛠 Tecnologias
 
 Esse projeto foi desenvolvido com as seguintes tecnologias:
@@ -62,9 +67,3 @@ Este projeto não é afiliado, associado, autorizado, endossado por,
 ou de qualquer forma oficialmente conectado com o WhatsApp ou qualquer
 uma de suas subsidiárias ou suas afiliadas. O site oficial do WhatsApp pode ser encontrado em https://whatsapp.com. 
 "WhatsApp" bem como nomes, marcas, emblemas e imagens relacionadas são marcas registradas de seus respectivos proprietários.
-
-## 👍 Agradecimentos e Créditos
-
-- [@pedroslopez](https://github.com/pedroslopez)
-- [@caioagiani](https://github.com/caioagiani)
- 
