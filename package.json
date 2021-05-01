@@ -6,7 +6,8 @@
   "license": "MIT",
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only --ignore-watch node_modules --ignore-watch src/data src/index.ts",
-    "start": "npx tsc --build && node dist/index.js"
+    "build": "npx tsc --build",
+    "start": "node dist/index.js"
   },
   "dependencies": {
     "axios": "^0.20.0",

@@ -45,10 +45,10 @@ yarn dev ou npm run dev
 - !perfil @contato **(Grupo)**
 - !figurinha
 - !eununca
-- !ban contato **(Grupo)**
-- !anime nome
+- !ban @contato **(Grupo)**
 
 ### 🕹 Jogo da Velha
+
 - !velha entrar
 - !velha começar
 - !velha jogar <número>
@@ -70,7 +70,8 @@ Para conseguir usar o comando !figurinha em gifs e vídeos é necessário:
 Depois que o merge da sua pull request for feito, você pode deletar a sua branch.
 
 ## ❗ Isenção de Responsabilidade
-Este projeto não é afiliado, associado, autorizado, endossado por, 
+
+Este projeto não é afiliado, associado, autorizado, endossado por,
 ou de qualquer forma oficialmente conectado com o WhatsApp ou qualquer
-uma de suas subsidiárias ou suas afiliadas. O site oficial do WhatsApp pode ser encontrado em https://whatsapp.com. 
+uma de suas subsidiárias ou suas afiliadas. O site oficial do WhatsApp pode ser encontrado em https://whatsapp.com.
 "WhatsApp" bem como nomes, marcas, emblemas e imagens relacionadas são marcas registradas de seus respectivos proprietários.

@@ -4,7 +4,6 @@ import covid from './covid';
 import perfil from './perfil';
 import ban from './ban';
 import figurinha from './figurinha';
-import anime from './anime';
 import velha from './jogo-da-velha';
 
 import { Message } from 'whatsapp-web.js';
@@ -19,7 +18,6 @@ const commands = {
   ban,
   velha,
   figurinha,
-  anime,
 };
 
 const commandHandler = (msg: Message): void => {
