@@ -21,13 +21,18 @@ const commands = {
 };
 
 const commandHandler = (msg: Message): void => {
-  const msgBody = msg.body;
-  const tokens = msgBody.split(' ');
+  const prefix = '!';
+  const message = msg.body;
+  if (!message.startsWith(prefix)) return;
 
-  if (tokens[0].startsWith('!')) {
-    const command = tokens[0].substring(1) as ICommands;
-    commands[command](msg, tokens);
-  }
+  const args = message.slice(prefix.length).trim().split(/ +/);
+  const command = args[0].toLowerCase() as ICommands;
+  const hasCommand = Object.keys(commands).includes(command);
+
+  if (!hasCommand) return;
+
+  args.shift();
+  commands[command](msg, args);
 };
 
 export default commandHandler;
