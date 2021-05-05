@@ -5,7 +5,7 @@ import formatDate from '../utils/formatDate';
 import formatNumber from '../utils/formatNumber';
 
 const covid = async (msg: Message, args: string[]): Promise<Message> => {
-  const sufix = args[1];
+  const sufix = args[0];
   const url = `https://covid19-brazil-api.now.sh/api/report/v1/brazil/uf/${sufix}`;
   const data = await getData<ICovidData>(url);
 
