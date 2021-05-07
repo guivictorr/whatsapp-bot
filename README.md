@@ -42,9 +42,10 @@ yarn dev ou npm run dev
 - !covid uf
 - !cotacao
 - !perfil
-- !perfil @contato **(Grupo)**
 - !figurinha
 - !eununca
+- !membros **(Grupo)**
+- !perfil @contato **(Grupo)**
 - !ban @contato **(Grupo)**
 
 ### 🕹 Jogo da Velha

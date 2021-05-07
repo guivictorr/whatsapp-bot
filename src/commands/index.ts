@@ -3,6 +3,7 @@ import eununca from './eununca';
 import covid from './covid';
 import perfil from './perfil';
 import ban from './ban';
+import membros from './membros';
 import figurinha from './figurinha';
 import velha from './jogo-da-velha';
 
@@ -18,6 +19,7 @@ const commands = {
   ban,
   velha,
   figurinha,
+  membros,
 };
 
 const commandHandler = (msg: Message): void => {
