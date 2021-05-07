@@ -1,4 +1,5 @@
 import { Message, GroupParticipant, GroupChat } from 'whatsapp-web.js';
+import isAdmin from '../utils/isAdmin';
 
 const ban = async (msg: Message): Promise<void | Message> => {
   const chat = (await msg.getChat()) as GroupChat;
@@ -8,26 +9,20 @@ const ban = async (msg: Message): Promise<void | Message> => {
   }
 
   const memberList: GroupParticipant[] = chat.participants;
-  const msgContact = await msg.getContact();
+  const { id } = await msg.getContact();
+  const checkAdmin = isAdmin(id, memberList);
 
-  const userIndex = memberList.findIndex(
-    (participant: GroupParticipant) =>
-      participant.id.user === msgContact.id.user,
-  );
-
-  const isAdmin = memberList[userIndex].isAdmin;
-
-  if (!isAdmin) {
+  if (!checkAdmin) {
     return msg.reply('🤖 Só admin pode utilizar o comando...');
   }
 
-  const [bannedUser] = await msg.getMentions();
+  const targetIds = msg.mentionedIds;
 
-  if (!bannedUser) {
+  if (!targetIds.length) {
     return msg.reply('🤖 Usuário não localizado...');
   }
 
-  await chat.removeParticipants([bannedUser.id._serialized]);
+  await chat.removeParticipants(targetIds);
 };
 
 export default ban;
