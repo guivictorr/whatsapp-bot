@@ -1,4 +1,4 @@
-import { Message, GroupParticipant, GroupChat } from 'whatsapp-web.js';
+import { Message, GroupChat } from 'whatsapp-web.js';
 import isAdmin from '../utils/isAdmin';
 
 const ban = async (msg: Message): Promise<void | Message> => {
@@ -8,9 +8,7 @@ const ban = async (msg: Message): Promise<void | Message> => {
     return msg.reply('🤖 Comando apenas para grupos.');
   }
 
-  const memberList: GroupParticipant[] = chat.participants;
-  const { id } = await msg.getContact();
-  const checkAdmin = isAdmin(id, memberList);
+  const checkAdmin = await isAdmin(msg);
 
   if (!checkAdmin) {
     return msg.reply('🤖 Só admin pode utilizar o comando...');
