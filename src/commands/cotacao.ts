@@ -1,7 +1,9 @@
 import { Message } from 'whatsapp-web.js';
+
 import { ICurrencyProps, IDataProps } from '../types';
+
 import getData from '../utils/getData';
-import formatNumber from '../utils/formatNumber';
+import formatNumbers from '../utils/formatNumbers';
 import formatDate from '../utils/formatDate';
 
 const cotacao = async (msg: Message): Promise<Message> => {
@@ -10,23 +12,24 @@ const cotacao = async (msg: Message): Promise<Message> => {
 
   const data = await getData<IDataProps>(url);
 
-  const type = (currency: ICurrencyProps) => {
-    const { name, code, bid, high, low, create_date } = currency;
-
-    return `\n 💸*${name} (${code})* \nValor atual: R$ ${formatNumber(
-      bid,
-    )} \nValor mais alto: R$ ${formatNumber(
-      high,
-    )} \nValor mais baixo: R$ ${formatNumber(low)}\n\n📅Data: ${formatDate(
-      create_date,
-    )}`;
-  };
-
   const message = `Cotação atual: \n${type(data.USD)} ${type(data.EUR)} ${type(
     data.BTC,
   )}`;
 
   return msg.reply(message);
+};
+
+const type = ({ bid, code, create_date, high, low, name }: ICurrencyProps) => {
+  const formatedDate = formatDate(create_date);
+  const [formatedBid, formatedHigh, formatedLow] = formatNumbers([
+    bid,
+    high,
+    low,
+  ]);
+
+  const message = `\n 💸*${name} (${code})* \nValor atual: R$ ${formatedBid} \nValor mais alto: R$ ${formatedHigh} \nValor mais baixo: R$ ${formatedLow}\n\n📅Data: ${formatedDate}`;
+
+  return message;
 };
 
 export default cotacao;
