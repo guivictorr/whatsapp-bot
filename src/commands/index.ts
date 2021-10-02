@@ -1,3 +1,5 @@
+import { Message } from 'whatsapp-web.js';
+
 import cotacao from './cotacao';
 import eununca from './eununca';
 import covid from './covid';
@@ -7,7 +9,6 @@ import membros from './membros';
 import figurinha from './figurinha';
 import velha from './jogo-da-velha';
 
-import { Message } from 'whatsapp-web.js';
 import config from '../config/config.json';
 
 type ICommands = keyof typeof commands;
