@@ -8,6 +8,7 @@ import figurinha from './figurinha';
 import velha from './jogo-da-velha';
 
 import { Message } from 'whatsapp-web.js';
+import config from '../config/config.json';
 
 type ICommands = keyof typeof commands;
 
@@ -23,9 +24,9 @@ const commands = {
 };
 
 const commandHandler = (msg: Message): void => {
-  const prefix = '!';
+  const { prefix } = config;
   const message = msg.body;
-  if (!message.startsWith(prefix)) return;
+  if (!message.startsWith(config.prefix)) return;
 
   const args = message.slice(prefix.length).trim().split(/ +/);
   const command = args[0].toLowerCase() as ICommands;
