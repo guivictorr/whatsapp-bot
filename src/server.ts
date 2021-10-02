@@ -1,10 +1,9 @@
-import { ClientSession } from 'whatsapp-web.js';
-
-import { Client } from 'whatsapp-web.js';
-
+import { ClientSession, Client } from 'whatsapp-web.js';
 import qrcode from 'qrcode-terminal';
 import fs from 'fs';
 import path from 'path';
+
+import config from './config/config.json';
 
 const sessionFile = path.resolve('src', 'data', 'session.json');
 
@@ -33,7 +32,7 @@ client.on('authenticated', (session: ClientSession) => {
 });
 
 client.on('ready', () => {
-  console.log('Client is ready! 🎉');
+  console.log(config.buildMessage);
 });
 
 client.initialize();
