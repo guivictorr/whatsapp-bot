@@ -5,10 +5,6 @@ import config from '../config/config.json';
 const membros = async (msg: Message): Promise<Message> => {
   const chat = (await msg.getChat()) as GroupChat;
 
-  if (!chat.isGroup) {
-    return msg.reply('🤖 Comando apenas para grupos.');
-  }
-
   const memberList: GroupParticipant[] = chat.participants;
   let message = '';
 

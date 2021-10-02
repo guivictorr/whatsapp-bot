@@ -4,10 +4,6 @@ import isAdmin from '../utils/isAdmin';
 const ban = async (msg: Message): Promise<void | Message> => {
   const chat = (await msg.getChat()) as GroupChat;
 
-  if (!chat.isGroup) {
-    return msg.reply('🤖 Comando apenas para grupos.');
-  }
-
   const checkAdmin = await isAdmin(msg);
 
   if (!checkAdmin) {
