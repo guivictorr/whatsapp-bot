@@ -12,9 +12,6 @@ const sessionData = fs.existsSync(sessionFile) ? require(sessionFile) : null;
 const client = new Client({
   session: sessionData,
   ffmpegPath: 'FFMPEG PATH HERE',
-  puppeteer: {
-    args: ['--no-sandbox'],
-  },
 });
 
 client.on('qr', (qr: string) => {
