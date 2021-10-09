@@ -1,10 +1,10 @@
 import { Message } from 'whatsapp-web.js';
 
-import { ICovidData } from '../types';
+import { ICovidData } from '../../types';
 
-import getData from '../utils/getData';
-import formatDate from '../utils/formatDate';
-import formatNumbers from '../utils/formatNumbers';
+import getData from '../../utils/getData';
+import formatDate from '../../utils/formatDate';
+import formatNumbers from '../../utils/formatNumbers';
 
 const covid = async (msg: Message, args: string[]): Promise<Message> => {
   const uf = args[0];

@@ -1,5 +1,5 @@
 import { Message } from 'whatsapp-web.js';
-import client from '../server';
+import client from '../../server';
 
 const figurinha = async (msg: Message): Promise<Message> => {
   const { id } = await msg.getChat();
