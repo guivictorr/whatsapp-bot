@@ -1,10 +1,23 @@
 import { Message } from 'whatsapp-web.js';
 
-import { ICurrencyProps, IDataProps } from '../../types';
-
 import getData from '../../utils/getData';
 import formatNumbers from '../../utils/formatNumbers';
 import formatDate from '../../utils/formatDate';
+
+type ICurrencyProps = {
+  name: string;
+  code: string;
+  bid: number;
+  high: number;
+  low: number;
+  create_date: string;
+};
+
+type IDataProps = {
+  USD: ICurrencyProps;
+  EUR: ICurrencyProps;
+  BTC: ICurrencyProps;
+};
 
 const cotacao = async (msg: Message): Promise<Message> => {
   const url =
