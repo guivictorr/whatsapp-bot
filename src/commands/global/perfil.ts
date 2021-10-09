@@ -1,5 +1,5 @@
 import { Message } from 'whatsapp-web.js';
-import sendProfile from '../utils/sendProfile';
+import sendProfile from '../../utils/sendProfile';
 
 const perfil = async (msg: Message): Promise<Message> => {
   const { id } = await msg.getChat();

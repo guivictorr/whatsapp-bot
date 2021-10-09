@@ -1,10 +1,10 @@
 import { Message } from 'whatsapp-web.js';
 
-import { ICurrencyProps, IDataProps } from '../types';
+import { ICurrencyProps, IDataProps } from '../../types';
 
-import getData from '../utils/getData';
-import formatNumbers from '../utils/formatNumbers';
-import formatDate from '../utils/formatDate';
+import getData from '../../utils/getData';
+import formatNumbers from '../../utils/formatNumbers';
+import formatDate from '../../utils/formatDate';
 
 const cotacao = async (msg: Message): Promise<Message> => {
   const url =

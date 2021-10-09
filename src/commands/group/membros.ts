@@ -1,6 +1,6 @@
 import { GroupChat, GroupParticipant, Message } from 'whatsapp-web.js';
-import client from '../server';
-import config from '../config/config.json';
+import client from '../../server';
+import config from '../../config/config.json';
 
 const membros = async (msg: Message): Promise<Message> => {
   const chat = (await msg.getChat()) as GroupChat;
