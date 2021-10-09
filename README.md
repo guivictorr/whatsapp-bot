@@ -48,12 +48,6 @@ yarn dev ou npm run dev
 - !perfil @contato **(Grupo)**
 - !ban @contato **(Grupo)**
 
-### 🕹 Jogo da Velha
-
-- !velha entrar
-- !velha começar
-- !velha jogar <número>
-
 ### 📌 Figurinhas animadas
 
 Para conseguir usar o comando !figurinha em gifs e vídeos é necessário:
