@@ -29,10 +29,10 @@ git clone https://github.com/guivictorr/whatsapp-bot.git
 cd whatsapp-bot
 
 ## 3. Instalar as dependências
-yarn ou npm install
+yarn
 
 ## 4. Rodar a aplicação
-yarn dev ou npm run dev
+yarn dev
 
 ## 5. Escanear o qrcode que aparece no terminal
 ```
