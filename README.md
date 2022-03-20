@@ -53,7 +53,7 @@ yarn dev
 Para conseguir usar o comando !figurinha em gifs e vídeos é necessário:
 
 1. Baixar o **[FFMPEG](https://ffmpeg.org/)**
-2. No arquivo **src/server.ts** na linha 15, apontar a pasta bin do ffmpeg
+2. No arquivo **src/server.ts** na linha 8, apontar a pasta bin do ffmpeg
 
 ## 🤔 Como contribuir
 
