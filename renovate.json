@@ -1,8 +1,3 @@
 {
   "extends": ["config:base"],
-  "packageRules": [
-    {
-      "matchPackageNames": ["whatsapp-web.js"]
-    }
-  ]
 }
