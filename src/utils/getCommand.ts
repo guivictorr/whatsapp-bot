@@ -7,8 +7,22 @@ type IGetCommand = {
 };
 
 const getCommand = (command: string): IGetCommand => {
-  const globalPath = path.resolve('src', 'commands', 'global', `${command}.ts`);
-  const groupPath = path.resolve('src', 'commands', 'group', `${command}.ts`);
+  const fileExtension = __filename.slice(-2);
+  const dirName = __dirname.split('/');
+  const currentFolder = dirName[dirName.length - 2];
+
+  const globalPath = path.resolve(
+    currentFolder,
+    'commands',
+    'global',
+    `${command}.${fileExtension}`,
+  );
+  const groupPath = path.resolve(
+    currentFolder,
+    'commands',
+    'group',
+    `${command}.${fileExtension}`,
+  );
 
   const commandData = fs.existsSync(globalPath)
     ? { isGroupCommand: false, path: globalPath }
