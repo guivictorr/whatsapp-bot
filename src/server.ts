@@ -1,11 +1,14 @@
 import { Client, LocalAuth } from 'whatsapp-web.js';
+import dotenv from 'dotenv';
 import qrcode from 'qrcode-terminal';
 
 import config from './config/config.json';
 
+dotenv.config();
+
 const client = new Client({
   authStrategy: new LocalAuth(),
-  ffmpegPath: 'FFMPEG PATH HERE',
+  ffmpegPath: process.env.FFMPAG_PATH,
 });
 
 client.on('qr', (qr: string) => {

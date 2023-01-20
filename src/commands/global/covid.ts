@@ -1,8 +1,7 @@
+import axios from 'axios';
 import { Message } from 'whatsapp-web.js';
 
-import getData from '../../utils/getData';
-import formatDate from '../../utils/formatDate';
-import formatNumbers from '../../utils/formatNumbers';
+import { formatDate, formatNumbers } from '../../utils/formatters';
 
 type ICovidData = {
   cases: number;
@@ -16,7 +15,7 @@ type ICovidData = {
 const covid = async (msg: Message, args: string[]): Promise<Message> => {
   const uf = args[0];
   const url = `https://covid19-brazil-api.now.sh/api/report/v1/brazil/uf/${uf}`;
-  const data = await getData<ICovidData>(url);
+  const { data } = await axios.get<ICovidData>(url);
 
   if (data.error) {
     return msg.reply(

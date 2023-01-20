@@ -19,7 +19,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 ## 📱💻 Instruções
 
-Partindo do pressuposto de que você já tenha o [Node](https://nodejs.org) ou [Yarn](https://yarnpkg.com/) instalado.
+Partindo do pressuposto de que você já tenha o [Node](https://nodejs.org) instalado.
 
 ```
 ## 1. Clonar repositório
@@ -29,16 +29,18 @@ git clone https://github.com/guivictorr/whatsapp-bot.git
 cd whatsapp-bot
 
 ## 3. Instalar as dependências
-yarn
+npm i
 
 ## 4. Rodar a aplicação
-yarn dev
+npm run dev
 
 ## 5. Escanear o qrcode que aparece no terminal
 ```
 
 ## ❗ Comandos
 
+- !gpt [prompt]
+- !dalle [prompt]
 - !covid uf
 - !cotacao
 - !perfil
@@ -48,12 +50,43 @@ yarn dev
 - !perfil @contato **(Grupo)**
 - !ban @contato **(Grupo)**
 
+---
+
+### 🔨 Criar comandos
+
+Para criar comandos basta criar um arquivo `.ts` em uma das pastas `group` para comandos válidos apenas em grupos ou `global` para comandos válidos globalmente.
+
+Exemplo:
+
+```ts
+const commandName = async (msg: Message, args: string[]): Promise<Message> => {
+  // some code
+  return msg.reply(gptResponse); // return msg.reply(string)
+};
+
+export default gpt;
+```
+
+Depois que o arquivo é criado o comando já ai estar funcionando
+
+### 🤖 Open AI
+
+Para conseguir usar os comandos `!gpt` e `!dalle` é preciso adicionar as variáveis de ambiente
+
+Você consegue essas credenciais criando uma conta no site da Open AI
+
+- OPENAI_API_KEY [Clique aqui](https://beta.openai.com/account/api-keys)
+- OPENAI_ORG_ID [Clique aqui](https://beta.openai.com/account/org-settings)
+
 ### 📌 Figurinhas animadas
 
 Para conseguir usar o comando !figurinha em gifs e vídeos é necessário:
 
 1. Baixar o **[FFMPEG](https://ffmpeg.org/)**
-2. No arquivo **src/server.ts** na linha 8, apontar a pasta bin do ffmpeg
+2. No arquivo `.env` configurar a variável de ambiente `FFMPEG_PATH` com o caminho
+   para o ffmpeg
+
+---
 
 ## 🤔 Como contribuir
 

@@ -2,3 +2,4 @@ node_modules
 src/data/session.json
 dist
 .wwebjs_auth
+.env

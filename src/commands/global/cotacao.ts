@@ -1,8 +1,7 @@
+import axios from 'axios';
 import { Message } from 'whatsapp-web.js';
 
-import getData from '../../utils/getData';
-import formatNumbers from '../../utils/formatNumbers';
-import formatDate from '../../utils/formatDate';
+import { formatDate, formatNumbers } from '../../utils/formatters';
 
 type ICurrencyProps = {
   name: string;
@@ -23,7 +22,7 @@ const cotacao = async (msg: Message): Promise<Message> => {
   const url =
     'https://economia.awesomeapi.com.br/json/all/USD-BRL,EUR-BRL,BTC-BRL';
 
-  const data = await getData<IDataProps>(url);
+  const { data } = await axios.get<IDataProps>(url);
 
   const message = `Cotação atual: \n${type(data.USD)} ${type(data.EUR)} ${type(
     data.BTC,
