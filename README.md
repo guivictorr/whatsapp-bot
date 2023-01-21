@@ -64,7 +64,7 @@ const commandName = async (msg: Message, args: string[]): Promise<Message> => {
   return msg.reply(gptResponse); // return msg.reply(string)
 };
 
-export default gpt;
+export default commandName;
 ```
 
 Depois que o arquivo é criado o comando já ai estar funcionando
