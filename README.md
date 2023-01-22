@@ -61,7 +61,7 @@ Exemplo:
 ```ts
 const commandName = async (msg: Message, args: string[]): Promise<Message> => {
   // some code
-  return msg.reply(gptResponse); // return msg.reply(string)
+  return msg.reply('Hello World'); // return msg.reply(string)
 };
 
 export default commandName;
