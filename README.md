@@ -31,10 +31,12 @@ cd whatsapp-bot
 ## 3. Instalar as dependências
 npm i
 
-## 4. Rodar a aplicação
+## 4. Configurar o arquivo .env
+
+## 5. Rodar a aplicação
 npm run dev
 
-## 5. Escanear o qrcode que aparece no terminal
+## 6. Escanear o qrcode que aparece no terminal
 ```
 
 ## ❗ Comandos
