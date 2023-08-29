@@ -88,6 +88,8 @@ Para conseguir usar o comando !figurinha em gifs e vídeos é necessário:
 2. No arquivo `.env` configurar a variável de ambiente `FFMPEG_PATH` com o caminho
    para o ffmpeg
 
+💡 Você pode tentar usar o comando `whereis ffmpeg` para achar o caminho
+
 ---
 
 ## 🤔 Como contribuir
