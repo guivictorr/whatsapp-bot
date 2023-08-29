@@ -1,7 +1,7 @@
 node_modules
 src/data/session.json
 dist
-.wwebjs_auth
+.wwebjs_*
 .env
 .DS_Store
 */.DS_Store
