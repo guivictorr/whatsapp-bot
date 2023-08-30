@@ -2,8 +2,6 @@ import { Client, LocalAuth } from 'whatsapp-web.js';
 import dotenv from 'dotenv';
 import qrcode from 'qrcode-terminal';
 
-import config from './config/config.json';
-
 dotenv.config();
 
 const client = new Client({
@@ -16,7 +14,7 @@ client.on('qr', (qr: string) => {
 });
 
 client.on('ready', () => {
-  console.log(config.buildMessage);
+  console.log('🎊 Client is ready!');
 });
 
 client.initialize();

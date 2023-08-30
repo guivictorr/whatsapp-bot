@@ -1,11 +1,11 @@
 import { Message } from 'whatsapp-web.js';
 import path from 'path';
 
-import { prefix } from '../config/config.json';
 import getCommand from '../utils/getCommand';
 import sanitize from '../utils/sanitize';
 
 const commandHandler = async (msg: Message): Promise<Message | void> => {
+  const prefix = process.env.PREFIX as string;
   if (!msg.body.startsWith(prefix)) return;
 
   const { isGroup } = await msg.getChat();
