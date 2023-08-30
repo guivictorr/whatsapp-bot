@@ -1,5 +1,5 @@
 import { Message } from 'whatsapp-web.js';
-import fs from 'fs';
+import path from 'path';
 
 import { prefix } from '../config/config.json';
 import getCommand from '../utils/getCommand';
@@ -10,15 +10,17 @@ const commandHandler = async (msg: Message): Promise<Message | void> => {
 
   const { isGroup } = await msg.getChat();
   const { args, command } = sanitize(msg.body);
-  const { path, isGroupCommand } = getCommand(command);
 
-  if (!fs.existsSync(path)) return;
+  const startPath = path.join(__dirname);
+  const commandData = getCommand(startPath, command);
 
-  const exec = await import(path);
+  if (commandData === null) {
+    return msg.reply('🤖 Esse comando não existe meu chapa!');
+  }
 
-  if (isGroupCommand && isGroup) {
-    return exec.default(msg, args);
-  } else if (isGroupCommand && !isGroup) {
+  const exec = await import(commandData.commandPath);
+
+  if (commandData.categoryName === 'group' && !isGroup) {
     return msg.reply('🤖 Comando apenas para grupos');
   }
 

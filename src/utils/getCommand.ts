@@ -1,34 +1,36 @@
 import path from 'path';
 import fs from 'fs';
 
-type IGetCommand = {
-  isGroupCommand: boolean;
-  path: string;
+type GetCommandReturn = {
+  categoryName: string;
+  commandPath: string;
 };
 
-const getCommand = (command: string): IGetCommand => {
-  const fileExtension = __filename.slice(-2);
-  const dirName = __dirname.split('/');
-  const currentFolder = dirName[dirName.length - 2];
+const getCommand = (
+  startPath: string,
+  command: string,
+): GetCommandReturn | null => {
+  const files = fs.readdirSync(startPath);
 
-  const globalPath = path.resolve(
-    currentFolder,
-    'commands',
-    'global',
-    `${command}.${fileExtension}`,
-  );
-  const groupPath = path.resolve(
-    currentFolder,
-    'commands',
-    'group',
-    `${command}.${fileExtension}`,
-  );
+  for (const file of files) {
+    const filePath = path.resolve(startPath, file);
+    const stat = fs.statSync(filePath);
 
-  const commandData = fs.existsSync(globalPath)
-    ? { isGroupCommand: false, path: globalPath }
-    : { isGroupCommand: true, path: groupPath };
+    if (stat.isDirectory()) {
+      const foundInfo = getCommand(filePath, command);
+      if (foundInfo) {
+        return foundInfo;
+      }
+    } else {
+      const fileNameWithoutExtension = path.parse(file).name;
+      if (command.includes(fileNameWithoutExtension)) {
+        const category = path.basename(path.dirname(filePath));
+        return { categoryName: category, commandPath: filePath };
+      }
+    }
+  }
 
-  return commandData;
+  return null;
 };
 
 export default getCommand;
