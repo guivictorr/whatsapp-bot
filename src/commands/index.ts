@@ -1,7 +1,7 @@
 import { Message } from 'whatsapp-web.js';
 import path from 'path';
 
-import getCommand from '../utils/getCommand';
+import getCommand from '../utils/get-command';
 import sanitize from '../utils/sanitize';
 
 const commandHandler = async (msg: Message): Promise<Message | void> => {

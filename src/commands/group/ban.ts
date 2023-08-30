@@ -1,5 +1,5 @@
 import { Message, GroupChat } from 'whatsapp-web.js';
-import isAdmin from '../../utils/isAdmin';
+import isAdmin from '../../utils/is-admin';
 
 const ban = async (msg: Message): Promise<void | Message> => {
   const chat = (await msg.getChat()) as GroupChat;
