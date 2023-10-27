@@ -5,26 +5,18 @@
 ## 👍 Acknowledgments and Credits
 
 - [@pedroslopez](https://github.com/pedroslopez)
-  
 - [@caioagiani](https://github.com/caioagiani)
-  
 
 ## 🛠 Technologies
 
 This project was developed using the following technologies:
 
 - [Whatsapp-web.js](https://github.com/pedroslopez/whatsapp-web.js)
-  
 - [NodeJS](https://nodejs.org/)
-  
 - [Typescript](https://typescriptlang.org/)
-  
 - [node-base64-image]()
-  
 - [qrcode-terminal](https://www.npmjs.com/package/node-base64-image)
-  
 - [Axios](https://www.npmjs.com/package/axios)
-  
 
 ## 📱💻 Instructions
 
@@ -65,25 +57,15 @@ npm run dev
 ## ❗ Commands
 
 - !gpt [prompt]
-  
 - !dalle [prompt]
-  
 - !covid state
-  
 - !cotacao
-  
-- !profile
-  
-- !sticker
-  
-- !idontever
-  
-- !members **(Group)**
-  
-- !profile @contact **(Group)**
-  
+- !perfil
+- !figurinha
+- !eununca
+- !membros **(Group)**
+- !perfil @contact **(Group)**
 - !ban @contact **(Group)**
-  
 
 ---
 
@@ -111,18 +93,15 @@ To use the `!gpt` and `!dalle` commands, you need to add environment variables:
 You can obtain these credentials by creating an account on the OpenAI website.
 
 - OPENAI_API_KEY [Click here](https://beta.openai.com/account/api-keys)
-  
 - OPENAI_ORG_ID [Click here](https://beta.openai.com/account/org-settings)
-  
 
 ### 📌 Animated Stickers
 
-To use the !sticker command with gifs and videos, it is necessary for you to:
+To use the !figurinha command with gifs and videos, it is necessary for you to:
 
 1. Download **[FFMPEG](https://ffmpeg.org/)**
-  
+
 2. In the `.env` file, configure the `FFMPEG_PATH` environment variable with the path to ffmpeg
-  
 
 💡 You can try using the `whereis ffmpeg` command to find the path.
 
@@ -131,15 +110,11 @@ To use the !sticker command with gifs and videos, it is necessary for you to:
 ## 🤔 How to Contribute
 
 - Fork this repository;
-  
 - Create a branch with your feature: `git checkout -b my-feature`;
-  
 - Commit your changes: `git commit -m 'feat: My new feature'`;
-  
 - Push to your branch: `git push origin my-feature`.
-  
+
 Once your pull request is merged, you can delete your branch.
-  
 
 ## ❗ Disclaimer
 
