@@ -11,10 +11,11 @@ datasource db {
 }
 
 model User {
-  id      Int    @id @default(autoincrement())
-  name    String
-  balance Int    @default(100000)
-  bets    Bet[]
+  id        String   @id @default(uuid())
+  name      String
+  balance   Int      @default(100000)
+  createdAt DateTime @default(now())
+  bets      Bet[]
 }
 
 model Game {
@@ -24,16 +25,18 @@ model Game {
   secondOption String
   winner       String
   finishedAt   DateTime?
+  createdAt    DateTime  @default(now())
   bets         Bet[]
 }
 
 model Bet {
-  id     Int    @id @default(autoincrement())
-  value  Int
-  option String
+  id        Int      @id @default(autoincrement())
+  value     Int
+  option    String
+  createdAt DateTime @default(now())
 
-  game   Game @relation(fields: [gameId], references: [id])
+  game   Game   @relation(fields: [gameId], references: [id])
   gameId Int
-  user   User @relation(fields: [userId], references: [id])
-  userId Int
+  user   User   @relation(fields: [userId], references: [id])
+  userId String
 }
