@@ -10,7 +10,7 @@ const ban = async (msg: Message): Promise<void | Message> => {
     return msg.reply('🤖 Só admin pode utilizar o comando...');
   }
 
-  const targetIds = msg.mentionedIds;
+  const targetIds = msg.mentionedIds.map(id => id._serialized);
 
   if (!targetIds.length) {
     return msg.reply('🤖 Usuário não localizado...');

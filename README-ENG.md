@@ -27,29 +27,19 @@ Assuming you already have [Node](https://nodejs.org) installed.
 
 git clone https://github.com/guivictorr/whatsapp-bot.git
 
-
-
 ## 2.  Enter the folder
 
 cd whatsapp-bot
 
-
-
 ## 3. Install dependencies
 
-npm i
-
-
+pnpm i
 
 ## 4. Configure the .env file
 
-
-
 ## 5. Run the application
 
-npm run dev
-
-
+pnpm run dev
 
 ## 6. Scan the QR code that appears in the terminal
 ```

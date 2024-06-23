@@ -31,12 +31,12 @@ git clone https://github.com/guivictorr/whatsapp-bot.git
 cd whatsapp-bot
 
 ## 3. Instalar as dependências
-npm i
+pnpm install
 
 ## 4. Configurar o arquivo .env
 
 ## 5. Rodar a aplicação
-npm run dev
+pnpm run dev
 
 ## 6. Escanear o qrcode que aparece no terminal
 ```
