@@ -13,6 +13,7 @@ const commandHandler = async (msg: Message): Promise<Message | void> => {
 
   const startPath = path.join(__dirname);
   const commandData = getCommand(startPath, command);
+  console.log(commandData);
 
   if (commandData === null) {
     return msg.reply('🤖 Esse comando não existe meu chapa!');

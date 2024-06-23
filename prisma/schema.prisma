@@ -1,0 +1,39 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id      Int    @id @default(autoincrement())
+  name    String
+  balance Int    @default(100000)
+  bets    Bet[]
+}
+
+model Game {
+  id           Int       @id @default(autoincrement())
+  description  String
+  firstOption  String
+  secondOption String
+  winner       String
+  finishedAt   DateTime?
+  bets         Bet[]
+}
+
+model Bet {
+  id     Int    @id @default(autoincrement())
+  value  Int
+  option String
+
+  game   Game @relation(fields: [gameId], references: [id])
+  gameId Int
+  user   User @relation(fields: [userId], references: [id])
+  userId Int
+}

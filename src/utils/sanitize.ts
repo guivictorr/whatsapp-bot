@@ -5,10 +5,16 @@ type ISanitize = {
 
 const sanitize = (msg: string): ISanitize => {
   const prefix = process.env.PREFIX as string;
-  const args = msg.slice(prefix.length).trim().split(/ +/);
-  const command = args.splice(0, 1).toString().toLowerCase();
+  // !command arg1;arg 2;arg3
+  const [command, ...args] = msg.split(' ');
+  const sanitizedCommand = command.replace(prefix, '');
+  const splittedArgs = args.join(' ').split(';');
 
-  return { args, command };
+  if (!sanitizedCommand) {
+    return { args: [], command: '' };
+  }
+
+  return { args: splittedArgs, command: sanitizedCommand };
 };
 
 export default sanitize;
