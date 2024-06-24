@@ -1,35 +1,13 @@
 import { Message } from 'whatsapp-web.js';
 import { prisma } from '../../../lib/prisma';
 
-const finishgame = async (
-  msg: Message,
-  args: string[],
-): Promise<void | Message> => {
-  const [winnerOption] = args;
-
-  if (winnerOption !== '1' && winnerOption !== '2') {
-    return msg.reply('🤖 Identifique o vencedor (1 ou 2)');
-  }
-
-  const ongoingGame = await prisma.game.findFirst({
-    where: {
-      finishedAt: null,
-    },
-  });
-
-  if (!ongoingGame) {
-    return msg.reply('🤖 Não há jogo em andamento');
-  }
-
-  const winner =
-    winnerOption === '1' ? ongoingGame.firstOption : ongoingGame.secondOption;
-
+const processPayments = async (gameId: number, winner: string) => {
   const { _sum: totalBets } = await prisma.bet.aggregate({
     _sum: {
       value: true,
     },
     where: {
-      gameId: ongoingGame.id,
+      gameId,
     },
   });
   const { _sum: totalWinnerBets } = await prisma.bet.aggregate({
@@ -37,20 +15,20 @@ const finishgame = async (
       value: true,
     },
     where: {
-      gameId: ongoingGame.id,
+      gameId,
       option: winner,
     },
   });
 
   if (totalBets.value === null || totalWinnerBets.value === null) {
-    return msg.reply('🤖 Não foi possível calcular o resultado');
+    return null;
   }
 
   const multiplier = totalBets.value / totalWinnerBets.value;
 
   const winners = await prisma.bet.findMany({
     where: {
-      gameId: ongoingGame.id,
+      gameId,
       option: winner,
     },
     select: {
@@ -74,6 +52,38 @@ const finishgame = async (
     });
   }
 
+  return totalBets.value;
+};
+
+const finishgame = async (
+  msg: Message,
+  args: string[],
+): Promise<void | Message> => {
+  const [winnerOption] = args;
+
+  if (winnerOption !== '1' && winnerOption !== '2') {
+    return msg.reply('🤖 Identifique o vencedor (1 ou 2)');
+  }
+
+  const ongoingGame = await prisma.game.findFirst({
+    where: {
+      finishedAt: null,
+    },
+  });
+
+  if (!ongoingGame) {
+    return msg.reply('🤖 Não há jogo em andamento');
+  }
+
+  const winner =
+    winnerOption === '1' ? ongoingGame.firstOption : ongoingGame.secondOption;
+
+  const totalBets = await processPayments(ongoingGame.id, winner);
+
+  if (totalBets === null) {
+    return msg.reply('🤖 Não foi possível calcular o resultado');
+  }
+
   await prisma.game.update({
     where: {
       id: ongoingGame.id,
@@ -86,7 +96,7 @@ const finishgame = async (
   prisma.$disconnect();
 
   return msg.reply(
-    `O jogo foi finalizado\n\nTotal apostado: ${totalBets.value / 100}`,
+    `O jogo foi finalizado\n\nTotal apostado: ${totalBets / 100}`,
   );
 };
 
