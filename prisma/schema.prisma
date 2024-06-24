@@ -35,7 +35,7 @@ model Bet {
   option    String
   createdAt DateTime @default(now())
 
-  game   Game   @relation(fields: [gameId], references: [id])
+  game   Game   @relation(fields: [gameId], references: [id], onDelete: Cascade)
   gameId Int
   user   User   @relation(fields: [userId], references: [id])
   userId String
