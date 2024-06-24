@@ -43,7 +43,9 @@ const startgame = async (
   });
   const { firstOption, secondOption } = newGame;
 
-  return msg.reply(`${description}\n\n1. ${firstOption}\n2. ${secondOption}`);
+  return msg.reply(
+    `${description}\n\n1. ${firstOption}\n2. ${secondOption}\n30 segundos para apostar`,
+  );
 };
 
 export default startgame;

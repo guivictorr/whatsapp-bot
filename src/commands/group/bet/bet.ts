@@ -8,6 +8,7 @@ const bet = async (msg: Message, args: string[]): Promise<void | Message> => {
   const userId = contact.id._serialized;
   const [selectedOption, amount] = args;
   const betAmount = Number(amount) * 100; // bet in cents;
+  const currentTime = new Date();
 
   if (args.length !== 2) {
     return msg.reply('🤖 Escolha uma opção e o valor da aposta');
@@ -53,6 +54,12 @@ const bet = async (msg: Message, args: string[]): Promise<void | Message> => {
 
   if (!ongoingGame) {
     return msg.reply('🤖 Nenhum jogo em andamento');
+  }
+
+  const timeToBet = new Date(ongoingGame.createdAt).getTime() + 30 * 1000;
+
+  if (currentTime.getTime() > timeToBet) {
+    return msg.reply('🤖 Você não pode apostar mais');
   }
 
   if (ongoingGame.bets.length >= 1) {
