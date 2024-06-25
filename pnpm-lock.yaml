@@ -23,6 +23,9 @@ dependencies:
   qrcode-terminal:
     specifier: ^0.12.0
     version: 0.12.0
+  slugify:
+    specifier: ^1.6.6
+    version: 1.6.6
   whatsapp-web.js:
     specifier: github:pedroslopez/whatsapp-web.js#webpack-exodus
     version: github.com/pedroslopez/whatsapp-web.js/cd566f28b9957d58dbd470470f6e2fe018808db3
@@ -1957,6 +1960,11 @@ packages:
       astral-regex: 2.0.0
       is-fullwidth-code-point: 3.0.0
     dev: true
+
+  /slugify@1.6.6:
+    resolution: {integrity: sha512-h+z7HKHYXj6wJU+AnS/+IH8Uh9fdcX1Lrhg1/VMdf9PwoBQXFcXiAdsy2tSK0P6gKwJLXp02r90ahUCqHk9rrw==}
+    engines: {node: '>=8.0.0'}
+    dev: false
 
   /sprintf-js@1.0.3:
     resolution: {integrity: sha512-D9cPgkvLlV3t3IzL0D0YLvGA9Ahk4PcvVwUbN0dSGr1aP0Nrt4AEnTUbuGvquEC0mA64Gqt1fzirlRs5ibXx8g==}
