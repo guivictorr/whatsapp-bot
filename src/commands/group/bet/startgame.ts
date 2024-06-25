@@ -44,7 +44,7 @@ const startgame = async (
   const { firstOption, secondOption } = newGame;
 
   return msg.reply(
-    `${description}\n\n1. ${firstOption}\n2. ${secondOption}\n30 segundos para apostar`,
+    `${description}\n\n1. ${firstOption}\n2. ${secondOption}\n30 segundos para apostar\n\n!bet 1 ou 2;valor`,
   );
 };
 
