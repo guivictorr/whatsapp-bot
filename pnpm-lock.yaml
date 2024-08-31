@@ -27,8 +27,8 @@ dependencies:
     specifier: ^1.6.6
     version: 1.6.6
   whatsapp-web.js:
-    specifier: github:pedroslopez/whatsapp-web.js#webpack-exodus
-    version: github.com/pedroslopez/whatsapp-web.js/cd566f28b9957d58dbd470470f6e2fe018808db3
+    specifier: ^1.25.0
+    version: 1.25.0
 
 devDependencies:
   '@types/node':
@@ -619,7 +619,7 @@ packages:
     requiresBuild: true
     dependencies:
       archiver-utils: 2.1.0
-      async: 3.2.5
+      async: 3.2.6
       buffer-crc32: 0.2.13
       readable-stream: 3.6.2
       readdir-glob: 1.1.3
@@ -644,8 +644,8 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /async@3.2.5:
-    resolution: {integrity: sha512-baNZyqaaLhyLVKm/DlvdW051MSgO6b8eVfIezl9E5PqWxFgzLm/wQntEW4zOytVburDEr0JlALEpdOFwvErLsg==}
+  /async@3.2.6:
+    resolution: {integrity: sha512-htCUDlxyyCLMgaM3xXg0C0LW2xqfuQ6p05pCEIsXuyQ+a1koYKTuBMzRNwmybfLgvJDMd0r1LTn4+E0Ti6C2AA==}
     dev: false
 
   /asynckit@0.4.0:
@@ -684,7 +684,6 @@ packages:
 
   /base64-js@1.5.1:
     resolution: {integrity: sha512-AKpaYlHn8t4SVbOHCy+b5+KKgvR4vrsD8vbvrbiQJps7fKDTkjkDry6ji0rUJjC0kzbNePLwzxq8iypo41qeWA==}
-    requiresBuild: true
     dev: false
 
   /big-integer@1.6.52:
@@ -1163,7 +1162,7 @@ packages:
     engines: {node: '>= 10.17.0'}
     hasBin: true
     dependencies:
-      debug: 4.3.4
+      debug: 4.3.5
       get-stream: 5.2.0
       yauzl: 2.10.0
     optionalDependencies:
@@ -1242,7 +1241,7 @@ packages:
     resolution: {integrity: sha512-IZTB4kq5GK0DPp7sGQ0q/BWurGHffRtQQwVkiqDgeO6wYJLLV5ZhgNOQ65loZxxuPMKZKZcICCUnaGtlxBiR0Q==}
     engines: {node: '>=0.8.0'}
     dependencies:
-      async: 3.2.5
+      async: 3.2.6
       which: 1.3.1
     dev: false
 
@@ -1387,7 +1386,6 @@ packages:
 
   /ieee754@1.2.1:
     resolution: {integrity: sha512-dcyqhDvX1C46lXZcVqCpK+FtMRQVdIMN6/Df5js2zouUsqG7I6sFxitIC+7KYK29KdXOLHdu9zL4sFnoVQnqaA==}
-    requiresBuild: true
     dev: false
 
   /ignore@4.0.6:
@@ -1810,7 +1808,7 @@ packages:
   /puppeteer@18.2.1:
     resolution: {integrity: sha512-7+UhmYa7wxPh2oMRwA++k8UGVDxh3YdWFB52r9C3tM81T6BU7cuusUSxImz0GEYSOYUKk/YzIhkQ6+vc0gHbxQ==}
     engines: {node: '>=14.1.0'}
-    deprecated: < 22.6.4 is no longer supported
+    deprecated: < 22.8.2 is no longer supported
     requiresBuild: true
     dependencies:
       https-proxy-agent: 5.0.1
@@ -2169,6 +2167,27 @@ packages:
     resolution: {integrity: sha512-2JAn3z8AR6rjK8Sm8orRC0h/bcl/DqL7tRPdGZ4I1CjdF+EaMLmYxBHyXuKL849eucPFhvBoxMsflfOb8kxaeQ==}
     dev: false
 
+  /whatsapp-web.js@1.25.0:
+    resolution: {integrity: sha512-gVFPosQ5u38pNCX9HC6UiQ0o2vnqlxg+v3qDOfYeWg+M0UUExAvnc86BpItjJ3gYTxTs102i5v6uLzyP1mM7vA==}
+    engines: {node: '>=18.0.0'}
+    dependencies:
+      '@pedroslopez/moduleraid': 5.0.2
+      fluent-ffmpeg: 2.1.2
+      mime: 3.0.0
+      node-fetch: 2.7.0
+      node-webpmux: 3.1.7
+      puppeteer: 18.2.1
+    optionalDependencies:
+      archiver: 5.3.2
+      fs-extra: 10.1.0
+      unzipper: 0.10.14
+    transitivePeerDependencies:
+      - bufferutil
+      - encoding
+      - supports-color
+      - utf-8-validate
+    dev: false
+
   /whatwg-url@5.0.0:
     resolution: {integrity: sha512-saE57nupxk6v3HY35+jzBwYa0rKSy0XR8JSxZPwgLr7ys0IBzhGviA1/TUGJLmSVqs8pb9AnvICXEuOHLprYTw==}
     dependencies:
@@ -2229,26 +2248,3 @@ packages:
       readable-stream: 3.6.2
     dev: false
     optional: true
-
-  github.com/pedroslopez/whatsapp-web.js/cd566f28b9957d58dbd470470f6e2fe018808db3:
-    resolution: {tarball: https://codeload.github.com/pedroslopez/whatsapp-web.js/tar.gz/cd566f28b9957d58dbd470470f6e2fe018808db3}
-    name: whatsapp-web.js
-    version: 1.23.1-alpha.5
-    engines: {node: '>=18.0.0'}
-    dependencies:
-      '@pedroslopez/moduleraid': 5.0.2
-      fluent-ffmpeg: 2.1.2
-      mime: 3.0.0
-      node-fetch: 2.7.0
-      node-webpmux: 3.1.7
-      puppeteer: 18.2.1
-    optionalDependencies:
-      archiver: 5.3.2
-      fs-extra: 10.1.0
-      unzipper: 0.10.14
-    transitivePeerDependencies:
-      - bufferutil
-      - encoding
-      - supports-color
-      - utf-8-validate
-    dev: false

@@ -12,7 +12,9 @@ const startgame = async (
   );
 
   if (options.length !== 2) {
-    return msg.reply('🤖 Um jogo deve ter duas opções');
+    return msg.reply(
+      '🤖 Um jogo deve ter duas opções (Ex: !startgame opção 1;opção 2)',
+    );
   }
 
   prisma.$connect();

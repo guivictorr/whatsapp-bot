@@ -17,7 +17,7 @@
     "openai": "^3.1.0",
     "qrcode-terminal": "^0.12.0",
     "slugify": "^1.6.6",
-    "whatsapp-web.js": "github:pedroslopez/whatsapp-web.js#webpack-exodus"
+    "whatsapp-web.js": "^1.25.0"
   },
   "devDependencies": {
     "@types/node": "^14.14.34",

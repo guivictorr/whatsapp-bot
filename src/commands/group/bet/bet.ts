@@ -11,7 +11,9 @@ const bet = async (msg: Message, args: string[]): Promise<void | Message> => {
   const currentTime = new Date();
 
   if (args.length !== 2) {
-    return msg.reply('🤖 Escolha uma opção e o valor da aposta');
+    return msg.reply(
+      '🤖 Escolha uma opção e o valor da aposta (Ex: !bet 1;100)',
+    );
   }
 
   if (isNaN(betAmount)) {

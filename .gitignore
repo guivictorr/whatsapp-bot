@@ -5,3 +5,4 @@ dist
 .env
 .DS_Store
 */.DS_Store
+data/*.db
