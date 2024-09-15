@@ -1,7 +1,6 @@
 import { Client, LocalAuth } from 'whatsapp-web.js';
 import dotenv from 'dotenv';
 import qrcode from 'qrcode-terminal';
-import { prisma } from './lib/prisma';
 
 dotenv.config();
 
@@ -18,7 +17,6 @@ client.on('ready', () => {
   console.log('🎊 Client is ready!');
 });
 client.on('disconnected', () => {
-  prisma.$disconnect();
   console.log('🤖 Turning off the lights');
 });
 
