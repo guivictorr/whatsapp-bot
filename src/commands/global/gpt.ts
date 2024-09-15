@@ -16,6 +16,7 @@ const getDavinciResponse = async (clientText: string) => {
       botResponse += text;
     });
     return `Chat GPT 🤖\n\n ${botResponse.trim()}`;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (e: any) {
     return `❌ OpenAI Response Error: ${e.response.data.error.message}`;
   }
