@@ -1,8 +1,5 @@
 import { Client, LocalAuth } from 'whatsapp-web.js';
-import dotenv from 'dotenv';
 import qrcode from 'qrcode-terminal';
-
-dotenv.config();
 
 const client = new Client({
   authStrategy: new LocalAuth(),
