@@ -9,11 +9,11 @@ const commandHandler = async (msg: Message): Promise<Message | void> => {
 
   const { command, args } = sanitize(msg.body);
 
-  if (!command) {
+  const { path } = findCommandPath(command);
+
+  if (!path) {
     return msg.reply('🤖 Esse comando não existe meu chapa!');
   }
-
-  const { path } = findCommandPath(command);
 
   const exec = await import(path);
 
