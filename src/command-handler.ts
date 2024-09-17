@@ -1,6 +1,7 @@
 import { Message } from 'whatsapp-web.js';
 import path from 'node:path';
 import fs from 'node:fs';
+import { BotException } from './error';
 
 const commandHandler = async (msg: Message): Promise<Message | void> => {
   const prefix = process.env.PREFIX as string;
@@ -19,7 +20,7 @@ const commandHandler = async (msg: Message): Promise<Message | void> => {
   try {
     await exec.default(msg, args);
   } catch (error) {
-    if (error instanceof Error) {
+    if (error instanceof BotException) {
       return msg.reply(error.message);
     }
 
