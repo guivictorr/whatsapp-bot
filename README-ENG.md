@@ -14,9 +14,7 @@ This project was developed using the following technologies:
 - [Whatsapp-web.js](https://github.com/pedroslopez/whatsapp-web.js)
 - [NodeJS](https://nodejs.org/)
 - [Typescript](https://typescriptlang.org/)
-- [node-base64-image]()
 - [qrcode-terminal](https://www.npmjs.com/package/node-base64-image)
-- [Axios](https://www.npmjs.com/package/axios)
 
 ## 📱💻 Instructions
 
@@ -44,46 +42,27 @@ pnpm run dev
 ## 6. Scan the QR code that appears in the terminal
 ```
 
-## ❗ Commands
-
-- !gpt [prompt]
-- !dalle [prompt]
-- !covid state
-- !cotacao
-- !perfil
-- !figurinha
-- !eununca
-- !membros **(Group)**
-- !perfil @contact **(Group)**
-- !ban @contact **(Group)**
-
 ---
 
 ### 🔨 Creating Commands
 
-To create commands, simply create a `.ts` file in one of the `group` folders for commands valid only in groups or `global` for globally valid commands.
+To create commands, simply create a `.ts` file in /commands folder
 
 Example:
 
 ```ts
-const commandName = async (msg: Message, args: string[]): Promise<Message> => {
+export default async function commandName(
+  msg: Message,
+  args: string[],
+): Promise<Message> {
   // some code
-  return msg.reply('Hello World'); // return msg.reply(string)
-};
+  return msg.reply('Hello World');
+}
 
 export default commandName;
 ```
 
 Once the file is created, the command will be functional.
-
-### 🤖 Open AI
-
-To use the `!gpt` and `!dalle` commands, you need to add environment variables:
-
-You can obtain these credentials by creating an account on the OpenAI website.
-
-- OPENAI_API_KEY [Click here](https://beta.openai.com/account/api-keys)
-- OPENAI_ORG_ID [Click here](https://beta.openai.com/account/org-settings)
 
 ### 📌 Animated Stickers
 

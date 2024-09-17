@@ -48,10 +48,13 @@ Para criar comandos basta criar um arquivo `.ts` na pasta /commands
 Exemplo:
 
 ```ts
-const commandName = async (msg: Message, args: string[]): Promise<Message> => {
-  // your command logic
+export default async function commandName(
+  msg: Message,
+  args: string[],
+): Promise<Message> {
+  // some code
   return msg.reply('Hello World');
-};
+}
 
 export default commandName;
 ```
