@@ -1,7 +1,7 @@
 <h1 align='center'>🤖 Whatsapp Bot</h1>
 <p align='center'>Um bot para o whatsapp feito usando <a href="https://github.com/pedroslopez/whatsapp-web.js">uma biblioteca que simula a conexão do Whatsapp Web em tempo real.</a></p>
 
-Você pode ver a versão em inglês deste arquivo README [here](https://github.com/guivictorr/whatsapp-bot/blob/master/README-ENG.md)
+English README [here](https://github.com/guivictorr/whatsapp-bot/blob/master/README-ENG.md)
 
 ## 👍 Agradecimentos e Créditos
 
