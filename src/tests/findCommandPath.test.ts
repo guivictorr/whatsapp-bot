@@ -13,35 +13,43 @@ const mockDirent = (name: string, isDirectory: boolean = false) => ({
   isSocket: () => false,
 });
 
-// Usage examples:
 const mockNestedCommandFolder = mockDirent('nested', true);
-const mockCommand = mockDirent('command');
+const mockNestedCommand = mockDirent('nested-command', false);
+const mockCommand = mockDirent('command', false);
 
 describe('findCommandPath', () => {
-  beforeEach(() => {
-    jest.resetAllMocks();
+  beforeAll(() => {
+    const mockFiles = new Map();
+
+    mockFiles.set(path.resolve(__dirname, '..', 'commands'), [
+      mockCommand,
+      mockNestedCommandFolder,
+    ]);
+    mockFiles.set(
+      path.resolve(__dirname, '..', 'commands', mockNestedCommandFolder.name),
+      [mockNestedCommand],
+    );
+
+    jest.spyOn(fs, 'readdirSync').mockImplementation(dirPath => {
+      const files = mockFiles.get(dirPath);
+      return files;
+    });
   });
 
   it('should return the correct path', () => {
-    jest.spyOn(fs, 'readdirSync').mockReturnValue([mockCommand]);
     const result = findCommandPath('command');
-    expect(result).toEqual({
-      path: path.resolve(__dirname, '..', 'commands', 'command.ts'),
-    });
+    expect(result.path).toBe(
+      path.resolve(__dirname, '..', 'commands', 'command.ts'),
+    );
   });
-  it('should return empty path if is a nested folder instead of a file', () => {
-    jest.spyOn(fs, 'readdirSync').mockReturnValue([mockNestedCommandFolder]);
-
+  it('should search commands recursively through nested folders', () => {
     const result = findCommandPath('nested-command');
-    expect(result).toEqual({
-      path: '',
-    });
+    expect(result.path).toBe(
+      path.resolve(__dirname, '..', 'commands', 'nested', 'nested-command.ts'),
+    );
   });
   it('should return an empty path if no command is found', () => {
-    jest.spyOn(fs, 'readdirSync').mockReturnValue([mockCommand]);
     const result = findCommandPath('unknown');
-    expect(result).toEqual({
-      path: '',
-    });
+    expect(result.path).toBe('');
   });
 });

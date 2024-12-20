@@ -25,25 +25,24 @@ const commandHandler = async (msg: Message): Promise<Message | void> => {
   }
 };
 
-export function findCommandPath(command: string): { path: string } {
-  const startPath = path.join(__dirname, './commands');
-  const files = fs.readdirSync(startPath, { withFileTypes: true });
+export function findCommandPath(
+  command: string,
+  startPath?: string,
+): { path: string } {
+  const currentPath = startPath || path.join(__dirname, './commands');
+  const files = fs.readdirSync(currentPath, { withFileTypes: true });
 
   for (const file of files) {
-    const filePath = path.resolve(startPath, file.name);
+    const filePath = path.resolve(currentPath, file.name);
 
     if (file.isDirectory()) {
-      return { path: '' };
-
-      // TODO: search command using recursion
-      // startPath = filePath;
-      // const foundInfo = findCommandPath(command);
-      // if (foundInfo) {
-      //   return foundInfo;
-      // }
+      const foundInfo = findCommandPath(command, filePath);
+      if (foundInfo.path !== '') {
+        return foundInfo;
+      }
     } else {
       const fileNameWithoutExtension = path.parse(file.name).name;
-      if (command.includes(fileNameWithoutExtension)) {
+      if (command === fileNameWithoutExtension) {
         return { path: filePath };
       }
     }
