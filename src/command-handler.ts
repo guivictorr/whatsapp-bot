@@ -54,7 +54,7 @@ function findCommandPath(command: string): { path: string } {
   return { path: '' };
 }
 
-function sanitize(msg: string) {
+export function sanitize(msg: string) {
   const prefix = process.env.PREFIX as string;
   // !command arg1;arg 2;arg3
   const [command, ...args] = msg.split(' ');
