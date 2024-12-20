@@ -3,7 +3,7 @@ import path from 'node:path';
 import fs from 'node:fs';
 import { BotException } from './error';
 
-const commandHandler = async (msg: Message): Promise<Message | void> => {
+const commandHandler = async (msg: Message): Promise<Message> => {
   const { command, args } = sanitize(msg.body);
 
   const { path } = findCommandPath(command);
@@ -15,7 +15,7 @@ const commandHandler = async (msg: Message): Promise<Message | void> => {
   const exec = await import(path);
 
   try {
-    await exec.default(msg, args);
+    return await exec.default(msg, args);
   } catch (error) {
     if (error instanceof BotException) {
       return msg.reply(error.message);
