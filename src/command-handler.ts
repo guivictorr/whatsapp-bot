@@ -4,9 +4,6 @@ import fs from 'node:fs';
 import { BotException } from './error';
 
 const commandHandler = async (msg: Message): Promise<Message | void> => {
-  const prefix = process.env.PREFIX as string;
-  if (!msg.body.startsWith(prefix)) return;
-
   const { command, args } = sanitize(msg.body);
 
   const { path } = findCommandPath(command);
@@ -56,10 +53,14 @@ function findCommandPath(command: string): { path: string } {
 
 export function sanitize(msg: string) {
   const prefix = process.env.PREFIX as string;
+  if (!msg.startsWith(prefix)) return { args: [], command: '' };
   // !command arg1;arg 2;arg3
   const [command, ...args] = msg.split(' ');
   const sanitizedCommand = command.replace(prefix, '');
-  const splittedArgs = args.join(' ').split(';');
+  const splittedArgs = args
+    .join(' ')
+    .split(';')
+    .filter(arg => arg.length > 0);
 
   if (!sanitizedCommand) {
     return { args: [], command: '' };
