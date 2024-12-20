@@ -37,6 +37,7 @@
     "typescript-eslint": "^8.5.0"
   },
   "simple-git-hooks": {
-    "pre-commit": "pnpm run type-check && pnpm run lint"
+    "pre-commit": "npm run type-check && npm run lint",
+    "pre-push": "npm run tests"
   }
 }
